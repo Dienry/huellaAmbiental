@@ -3,18 +3,7 @@ var overLay = $(".overLay");
 var modalClose = $(".modalClose");
 var formContainer = document.getElementById("formContainer");
 
-var App = (function(){
-    return{
-        init: function(){
-            document.getElementById("alimentario").addEventListener("click", function(){
-                if (formContainer.hasChildNodes()) {
-                    formContainer.innerHTML = "";
-                }
-                var form = document.createElement("form");
-                form.setAttribute("class", "col-md-12 col-xs-4");
-                var intro = document.createElement("h3");
-                intro.innerHTML = "La generación de desechos de alimentos comienza desde la compra de los mismos.";
-                var questions = [["¿Al comprar frutas y verduras, selecciono lo que voy a llevar en función de su aspecto estético?", 0, 1], 
+var questionsAlimentario = [["¿Al comprar frutas y verduras, selecciono lo que voy a llevar en función de su aspecto estético?", 0, 1], 
                 [" ¿Organizo mis compras armando una lista en base a lo que falta en mi hogar?", 1, 0], 
                 [" ¿Cuándo como en un restaurant queda comida sobrante en mi plato?", 0, 1], 
                 [" ¿Cuando compro productos lácteos, mantengo la cadena de frío durante el traslado?", 1, 0], 
@@ -30,16 +19,28 @@ var App = (function(){
                 [" ¿Desecho el pan viejo?", 0, 1], 
                 [" ¿Desecha los tomates maduros?", 0, 1], 
                 [" ¿Utiliza utensilios especiales para pelar tubérculos y frutas?", 1, 0]];
+
+var App = (function(){
+    return{
+        init: function(){
+            document.getElementById("alimentario").addEventListener("click", function(){
+                if (formContainer.hasChildNodes()) {
+                    formContainer.innerHTML = "";
+                }
+                var form = document.createElement("form");
+                form.setAttribute("class", "col-md-12 col-xs-4");
+                var intro = document.createElement("h3");
+                intro.innerHTML = "La generación de desechos de alimentos comienza desde la compra de los mismos.";
                 
                 form.appendChild(intro);
                 formContainer.appendChild(form);
 
-                for (var i = 0; i < questions.length; i++) {
-                    App.createFormOptionA(i, questions[i][0], questions[i][1], questions[i][2]);
+                for (var i = 0; i < questionsAlimentario.length; i++) {
+                    App.createFormOptionA(i, questionsAlimentario[i][0], questionsAlimentario[i][1], questionsAlimentario[i][2]);
                 };
 
                 var sendButton = document.createElement("button");
-                sendButton.setAttribute("class", "col-xs-offset-1 col-xs-2");
+                sendButton.setAttribute("class", "btn btn-primary col-xs-2");
                 sendButton.innerText = "Calcular";
                 sendButton.addEventListener("click", function(){
                     App.optionA();
@@ -81,7 +82,7 @@ var App = (function(){
                 }
 
                 var sendButton = document.createElement("button");
-                sendButton.setAttribute("class", "submit col-xs-offset-1 col-xs-2");
+                sendButton.setAttribute("class", "btn btn-primary col-xs-2");
                 sendButton.innerText = "Calcular";
                 sendButton.addEventListener("click", function(){
                     App.optionB();
@@ -123,7 +124,7 @@ var App = (function(){
                 }
 
                 var sendButton = document.createElement("button");
-                sendButton.setAttribute("class", "submit col-xs-offset-1 col-xs-2");
+                sendButton.setAttribute("class", "btn btn-primary col-xs-2");
                 sendButton.innerText = "Calcular";
                 sendButton.addEventListener("click", function(){
                     App.optionC();
@@ -185,6 +186,7 @@ var App = (function(){
             }
 
             var showRecomm = document.createElement("button");
+            showRecomm.setAttribute("class", "btn btn-primary");
             showRecomm.innerHTML = "Mostrar";
             showRecomm.addEventListener("click", function(){
                 App.optionARecommendations();
@@ -217,16 +219,22 @@ var App = (function(){
                 "Puede utilizarlos para hacer salsas y sopas.",
                 "Evite la utilización de cuchillos ya que generan mucho desperdicio de alimento arrastrado en la cáscara separada."
             ];
-            var ol = document.createElement("ol");
             var h3 = document.createElement("h3");
+            var divRecommendations = document.createElement("div");
+            divRecommendations.setAttribute("class", "divRecommendations");
             h3.innerHTML = "Consejos para tener una mejor habito alimenticio:";
             formContainer.appendChild(h3);
-            for (var i = 0; i < recommendations.length; i++) {
-                var li = document.createElement("li");
-                li.innerHTML = recommendations[i];
-                ol.appendChild(li);
+            for (var i = 0; i < questionsAlimentario.length; i++) {
+                var numQuestion = i + 1;
+                var h4 = document.createElement("h4");
+                var p = document.createElement("p");
+                h4.innerHTML = numQuestion + ") " + questionsAlimentario[i][0];
+                p.innerHTML = recommendations[i];
+                divRecommendations.appendChild(h4);
+                divRecommendations.appendChild(p);
+                formContainer.appendChild(divRecommendations);
             }
-            formContainer.appendChild(ol);
+            
         },createFormOptionB: function(questionNumber, question){
             questionNumber++;
             var formQ = document.createElement("div");
@@ -283,20 +291,20 @@ var App = (function(){
             var radioButtonQAlto = document.createElement("input");
             radioButtonQAlto.setAttribute("type", "radio");
             radioButtonQAlto.setAttribute("name", "q" +  questionNumber);
-            radioButtonQAlto.setAttribute("value", "alto");
+            radioButtonQAlto.setAttribute("value", "high");
             radioButtonQAlto.setAttribute("checked", "checked");
             var labelRadioButtonQMedio = document.createElement("label");
             labelRadioButtonQMedio.innerHTML = "Medio";
             var radioButtonQMedio = document.createElement("input");
             radioButtonQMedio.setAttribute("type", "radio");
             radioButtonQMedio.setAttribute("name", "q" +  questionNumber);
-            radioButtonQMedio.setAttribute("value", "medio");
+            radioButtonQMedio.setAttribute("value", "mid");
             var labelRadioButtonQBajo = document.createElement("label");
             labelRadioButtonQBajo.innerHTML = "Bajo";
             var radioButtonQBajo = document.createElement("input");
             radioButtonQBajo.setAttribute("type", "radio");
             radioButtonQBajo.setAttribute("name", "q" +  questionNumber);
-            radioButtonQBajo.setAttribute("value", "bajo");
+            radioButtonQBajo.setAttribute("value", "low");
 
 
             formQ.appendChild(q);
@@ -386,7 +394,7 @@ var App = (function(){
                 document.getElementById("modal").querySelector("div").removeChild(document.getElementById("modal").querySelector("div").lastChild);
             }
             var h3 = document.createElement("h3");
-            h3.innerHTML = "Su huella ecologica es de " + huellaEcologica + " hectareas por año"
+            h3.innerHTML = "Su huella ecologica es de " + parseFloat(Math.round(huellaEcologica * 100) / 100).toFixed(2) + " hectareas por año"
             document.getElementById("modal").querySelector("div").appendChild(h3);
         }
     }
