@@ -1,12 +1,12 @@
 Arcane Denial (A25)	1	2
 Blasphemous Act (C16)	1	6
-Bloodchief Ascension (ZEN)	1	12
+Bloodchief Ascension (ZEN)	1	12 NO
 Bojuka Bog (C17)	1	2
 Command Tower (C17)	1	1.5
 Crawlspace (C13)	1	7
 Crosis's Charm (C13)	1	0.35
 Crumbling Necropolis (C17)	1	0.5
-Cyclonic Rift (C14)	1	16
+Cyclonic Rift (C14)	1	16 NO
 Damnation (PLC)	1	
 Dark Deal (FRF)	1	0.35
 Dark Ritual (USG)	1	
@@ -19,11 +19,11 @@ Dreadbore (RTR)	1
 Drowned Catacomb (M12)	1	
 Evacuation (9ED)	1	2
 Evolving Wilds (AKH)	1	0.25
-Exquisite Blood (AVR)	1	22
+Exquisite Blood (AVR)	1	22 NO
 Fascination (FRF)	1	0.25
 Fate Unraveler (C15)	1	
 Fevered Visions (SOI)	1	0.6
-Forced Fruition (LRW)	1	10
+Forced Fruition (LRW)	1	10 NO
 Geier Reach Sanitarium (EMN)	1	1.5
 Hero's Downfall (THS)	1	3.5
 Howling Mine (7ED)	1	
@@ -43,7 +43,7 @@ Mikokoro, Center of the Sea (A25)	1	2.5
 Molten Psyche (SOM)	1	1.25
 Mountain (DOM)	3	
 Murder (A25)	1	
-Mystical Tutor (EMA)	1	9
+Mystical Tutor (EMA)	1	9 NO
 Nekusar, the Mindrazer (C13) *CMDR*	1	4.5
 Nin, the Pain Artist (C17)	1	2
 Phyrexian Tyranny (PLS)	1	3
@@ -75,7 +75,7 @@ Temple of the False God (C17)	1	1
 Terminate (C17)	1	
 Terramorphic Expanse (C17)	1	
 The Locust God (HOU)	1	7
-Thought Vessel (C15)	1	7.5
+Thought Vessel (C15)	1	7.5 NO
 Torment of Hailfire (HOU)	1	6
 Underground River (C16)	1	
 Underworld Dreams (M10)	1	
